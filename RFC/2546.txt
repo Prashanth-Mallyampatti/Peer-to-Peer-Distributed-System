@@ -1,0 +1,126 @@
+
+
+
+
+
+
+Network Working Group                                          A. Durand
+Request for Comments: 2546                                          IMAG
+Category: Informational                                        B. Buclin
+                                                        AT&T Labs Europe
+                                                              March 1999
+
+
+                         6Bone Routing Practice
+
+Status of this Memo
+
+   This memo provides information for the Internet community.  It does
+   not specify an Internet standard of any kind.  Distribution of this
+   memo is unlimited.
+
+Copyright Notice
+
+   Copyright (C) The Internet Society (1999).  All Rights Reserved.
+
+1.  Introduction
+
+   The 6Bone is an environment supporting experimentation with the IPv6
+   protocols and products implementing it. As the network grows, the
+   need for common operation rules emerged. In particular, operation of
+   the 6Bone backbone is a challenge due to the frequent insertion of
+   bogus routes by leaf or even backbone sites.
+
+   This memo identifies guidelines on how 6Bone sites might operate, so
+   that the 6Bone can remain a quality experimentation environment and
+   to avoid pathological situations that have been encountered in the
+   past. It defines the 'best current practice' acceptable in the 6Bone
+   for the configuration of both Interior Gateway Protocols (such as
+   RIPng [RFC 2080]) and Exterior Gateway Protocols (like BGP4+ [RFC
+   2283]).
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC 2119].
+
+2.  Basic principles
+
+   The 6Bone is structured as a hierarchical network with pseudo Top
+   Level Aggregator (pTLA) sites, pseudo Next Level Aggregator (pNLA)
+   sites and leaf sites. This topology supports the IPv6 address
+   aggregation architecture as described in [1]. The 6Bone backbone is
+   made of a mesh interconnecting pTLAs only. pNLAs connect to one or
+   more pTLAs and provide transit service for leaf sites.
+
+
+
+
+Durand & Buclin              Informational                      [Page 1]
+
+RFC 2546                 6Bone Routing Practice               March 1999
+
+
+   pTLA sites MUST use BGP4+ [RFC 2283] as the mandatory routing
+   protocol for exchanging routing information among them.
+
+   Multi-homed sites or pNLAs SHOULD also use BGP4+. Regular sites MAY
+   use a simple default route to their ISP.
+
+3.  Common Rules
+
+   This section details common rules governing the routing on the 6Bone.
+   They are derived from issues encountered on the 6Bone, with respect
+   to the routes advertised, handling of special addresses, and
+   aggregation:
+
+    1) link local prefixes
+
+    2) site local prefixes
+
+    3) loopback prefix & unspecified prefix
+
+    4) multicast prefixes
+
+    5) IPv4-compatible prefixes
+
+    6) IPv4-mapped prefixes
+
+    7) default routes
+
+    8) Yet undefined unicast prefixes (from a different /3 prefix)
+
+    9) Inter site links issues
+
+    10) aggregation & advertisement issues
+
+3.1  Link-local prefix
+
+   The link-local prefix (FE80::/10) MUST NOT be advertised through
+   either an IGP or an EGP.
+
+   By definition, the link-local prefix has a scope limited to a
+   specific link. Since the prefix is the same on all IPv6 links,
+   advertising it in any routing protocol does not make sense and,
+   worse, may introduce nasty error conditions.
+
+   Well known cases where link local prefixes could be advertised by
+   mistake include:
+
+
+
+
+
+
+Durand & Buclin              Informational                      [Page 2]
+
+RFC 2546                 6Bone Routing Practice               March 1999
+
+
+   - a router advertising all directly connected network prefixes
+     including the link-local one.
+
+   - Subnetting of the link-local prefix.
+
+   In such cases, vendors should be urged to correct their code.
+
+3.2  Site-lo0uåü

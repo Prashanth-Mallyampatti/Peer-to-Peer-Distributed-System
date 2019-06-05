@@ -1,0 +1,50 @@
+######### ADD 98 ##########
+
+ADD RFC 2547 P2P-CI/1.0
+Host: 172.31.30.98
+Port: 9723
+Title: BGP VPN
+
+
+LOOKUP RFC 2547 P2P-CI/1.0
+Host: 172.31.30.98
+Port: 9723
+Title: BGP VPN
+
+
+LOOKUP RFC 2546 P2P-CI/1.0
+Host: 172.31.30.98
+Port: 9723
+Title: 6Bone Routing Practice
+
+LIST ALL P2P-CI/1.0
+Host: 172.31.30.98
+Port: 9723
+
+###########################
+
+
+######### ADD 34 ##########
+
+ADD RFC 2546 P2P-CI/1.0
+Host: 172.31.20.34
+Port: 9723
+Title: 6Bone Routing Practice
+
+
+ADD RFC 2547 P2P-CI/1.0
+Host: 172.31.20.34
+Port: 9723
+Title: BGP VPN
+
+LOOKUP RFC 2547 P2P-CI/1.0
+Host: 172.31.20.34
+Port: 9723
+Title: BGP VPN
+
+LIST ALL P2P-CI/1.0
+Host: 172.31.30.34
+Port: 9723
+
+###########################
+

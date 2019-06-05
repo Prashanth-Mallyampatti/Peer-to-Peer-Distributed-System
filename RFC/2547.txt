@@ -1,0 +1,26 @@
+RFC 2547
+Title BGP/MPLS VPNs
+
+Status of this Memo
+
+   This memo provides information for the Internet community.  It does
+   not specify an Internet standard of any kind.  Distribution of this
+   memo is unlimited.
+
+Copyright Notice
+
+   Copyright (C) The Internet Society (1999).  All Rights Reserved.
+
+Abstract
+
+   This document describes a method by which a Service Provider with an
+   IP backbone may provide VPNs (Virtual Private Networks) for its
+   customers.  MPLS (Multiprotocol Label Switching) is used for
+   forwarding packets over the backbone, and BGP (Border Gateway
+   Protocol) is used for distributing routes over the backbone.  The
+   primary goal of this method is to support the outsourcing of IP
+   backbone services for enterprise networks. It does so in a manner
+   which is simple for the enterprise, while still scalable and flexible
+   for the Service Provider, and while allowing the Service Provider to
+   add value. These techniques can also be used to provide a VPN which
+   itself provides IP service to customers.
